@@ -1,0 +1,81 @@
+/* Menu lateral */
+.menu-lateral {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 300px;
+  height: 100%;
+
+  background: white;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+
+  padding: 20px;
+
+  z-index: 1500;
+
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.menu-lateral.activo {
+  transform: translateX(0);
+}
+
+.menu-lateral a {
+  text-decoration: none;
+  color: #0d6efd;
+  display: block;
+}
+
+.menu-lateral .list-group-item {
+  border: none;
+}
+
+.menu-lateral .list-group-item:hover {
+  background-color: #f0f0f0;
+}
+
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  z-index: 1400;
+}
+
+/* Tarjeta de profesor*/
+.experto {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+.experto:focus-visible {
+    outline: 4px solid #005fcc;
+    background-color: #eef6ff;
+}
+
+#btnMenuAccesibilidad {
+  background: none;
+  border: none;
+}
+
+#btnMenuAccesibilidad img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Evitar que el li se resalte al dar click a un boton dentro */
+.no-resaltar:active,
+.no-resaltar:hover {
+ background-color: transparent;
+ color:#212529;
+}

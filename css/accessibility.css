@@ -1,0 +1,98 @@
+/*Tab focus para mejorar accesibilidad*/
+.content-section:focus-visible {
+  background-color: rgba(217, 228, 240);
+  outline: none;
+}
+
+.content-list-section:focus-visible {
+  background-color: rgba(255, 234, 218);
+  outline: none;
+}
+
+#lineaLectura {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background: rgba(255, 255, 0, 0.3);
+  pointer-events: none;
+  z-index: 2000;
+}
+
+/* Tamaño mouse para mejorar accesibilidad */
+.cursor-normal {
+  cursor: default;
+}
+
+.cursor-grande a,
+.cursor-grande button,
+.cursor-grande [role="button"],
+.cursor-grande input[type="button"],
+.cursor-grande input[type="submit"] {
+  cursor: url('../assets/images/hand_grande.png') 10 5, pointer !important;
+}
+
+.cursor-grande {
+  cursor: url('../assets/images/mouse_grande.png') 15 7, auto;
+}
+
+.cursor-muy-grande a,
+.cursor-muy-grande button,
+.cursor-muy-grande [role="button"],
+.cursor-muy-grande input[type="button"],
+.cursor-muy-grande input[type="submit"] {
+  cursor: url('../assets/images/hand_extra_grande.png') 14 7, pointer !important;
+}
+
+.cursor-muy-grande {
+  cursor: url('../assets/images/mouse_extra_grande.png') 20 8, auto;
+}
+
+/* Tamaño de fuente para mejorar accesibilidad */
+body {
+  transition: font-size 0.2s ease;
+}
+
+.fuente-normal {
+  font-size: 16px;
+}
+
+.fuente-grande {
+  font-size: 18px;
+}
+
+.fuente-muy-grande {
+  font-size: 20px;
+}
+
+/* Resaltar enlaces */
+.resaltar-enlaces a {
+  background-color: yellow !important;
+  color: black !important;
+  text-decoration: underline !important;
+  font-weight: bold !important;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+.resaltar-enlaces a.btn {
+  border: 2px solid black !important;
+}
+
+/* Resaltar tabulación */
+.modo-tabulador *:focus {
+  outline: 3px solid #ff0000 !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 8px rgba(255, 0, 0, 0.6) !important;
+  transition: outline 0.1s ease;
+}
+
+/* Lectura en Jaws */
+.sr-only {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}

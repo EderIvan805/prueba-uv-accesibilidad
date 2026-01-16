@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Neurociencia Aplicada a la Educación</title>
+    <link rel="icon" type="image/x-icon" href="assets/images/portada_materia.webp" />
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -17,55 +18,513 @@
 </head>
 
 <body>
-    <!-- Skip link para accesibilidad -->
-    <a href="#contenido" class="skip-link">Saltar al contenido</a>
+    <!-- Información solo para lectores de pantalla -->
+    <div class="sr-only" aria-live="polite" id="infoLectores">
+        Neurociencia Aplicada a la Educación de las Personas con Discapacidad.
+        Neurociencia Aplicada a la Educación de las Personas con Discapacidad.
+        Neurociencia Aplicada a la Educación de las Personas con Discapacidad.
 
-    <!-- Header -->
-    <header class="bg-light p-3">
-        <h1 class="visually-hidden">
-            Neurociencia Aplicada a la Educación de las Personas con Discapacidad
-        </h1>
+        Secciones de la página:
+        Objetivo,
+        Descripción,
+        Contenido,
+        Expertos en contenido,
+        Fuentes de información,
+        Módulo 1. El cerebro, base de las neurociencias,
+        Propósito del Módulo 1,
+        Introducción al Módulo 1,
+        Tema 1,
+        Definición de neurociencia,
+        Antecedentes,
+        Teoria neuronal,
+        Neurociencia y educación,
+        Neurociencia cognitiva y neuroeducación,
+        Plasticidad cerebral y aprendizaje,
+        Autoevaluación.
 
-        <button id="btnMenu" class="btn btn-outline-primary" aria-expanded="false" aria-controls="menuPrincipal">
-            Menú
-        </button>
+        Para acceder a la información de ayuda de esta Experiencia Educativa en Windows presiona las teclas Alt + I.
+        En MacOS presiona las teclas Control + Option + I.
 
-        <nav id="menuPrincipal" class="mt-3" aria-label="Menú principal" hidden>
-            <ul class="list-unstyled">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="modulo.html">Módulo 1</a></li>
-                <li><a href="tema1.html">Tema 1</a></li>
-                <li><a href="autoevaluacion.html">Autoevaluación</a></li>
-            </ul>
-        </nav>
+        Para cerrar la ventana con la información de ayuda en Windows presiona las teclas Alt + X.
+        En MacOS presiona la tecla Escape.
+
+        Para navegar dentro de la Experiencia Educativa utiliza los siguientes atajos:
+
+        Windows:
+        Abrir menú principal Alt + M.
+        Cerrar menú principal Alt + C.
+        Archivo de lectura fácil Alt + L.
+
+        MacOS:
+        Abrir menú principal Control + Option + M.
+        Cerrar menú principal Control + Option + C.
+        Archivo de lectura fácil Control + Option + L.
+    </div>
+
+    <header class="bg-light p-3 header-with-image"
+        style="background-image: url('assets/images/portada_materia.webp'); background-size: cover; background-position: center; position: relative; min-height: 300px;">
+
+        <div class="text-center mb-3 position-relative">
+            <h1 class="text-white mb-3" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+                Neurociencia Aplicada a la Educación de las Personas con Discapacidad
+            </h1>
+            <p class="text-white" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+                Licenciatura en Desarrollo Integral de las Personas con Discapacidad
+            </p>
+        </div>
+
+        <div class="position-fixed end-0 m-3">
+            <button class="btn btn-primary" aria-label="Menu principal Presione Alt más M para abrir" type="button"
+                id="btnMenuPrincipal">
+                Menu
+            </button>
+
+            <!-- Menú de accesibilidad -->
+            <div class="dropdown mt-5 d-none d-md-block">
+                <button class="btn btn-primary" aria-hidden="true" type="button" tabindex="-1" id="btnMenuAccesibilidad"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="assets/icons/accesibilidad.png" alt="" aria-hidden="true">
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="btnMenuAccesibilidad">
+                    <li><button class="dropdown-item" data-bs-toggle="modal"
+                            data-bs-target="#modalLectorInmersivo">Lector inmersivo</button></li>
+                    <li><button id="btnLinea" class="dropdown-item">Línea de lectura</button></li>
+                    <li>
+                        <div class="dropdown-item d-flex align-items-center no-resaltar">
+                            <span class="flex-grow-1">Tamaño cursor</span>
+
+                            <div class="btn-group ms-2" role="group" aria-label="Control tamaño de cursor">
+                                <button id="btnCursorChico" type="button" class="btn btn-outline-secondary btn-sm"
+                                    aria-label="Disminuir tamaño del cursor">-</button>
+                                <button id="btnCursorGrande" type="button" class="btn btn-outline-secondary btn-sm"
+                                    aria-label="Aumentar tamaño del cursor">+</button>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="dropdown-item d-flex align-items-center no-resaltar">
+                            <span class="flex-grow-1">Tamaño fuente</span>
+
+                            <div class="btn-group ms-2" role="group" aria-label="Control tamaño de fuente">
+                                <button id="btnFuenteChica" type="button" class="btn btn-outline-secondary btn-sm"
+                                    aria-label="Disminuir tamaño fuente">-</button>
+                                <button id="btnFuenteGrande" type="button" class="btn btn-outline-secondary btn-sm"
+                                    aria-label="Aumentar tamaño fuente">+</button>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="dropdown-item d-flex align-items-center no-resaltar">
+                            <span class="flex-grow-1 me-3">Resaltar enlaces</span>
+                            <button id="btnResaltarEnlaces" type="button" class="btn btn-outline-primary btn-sm">
+                                Activar
+                            </button>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="dropdown-item d-flex align-items-center no-resaltar">
+                            <span class="flex-grow-1 me-3">Resaltar tabulación</span>
+                            <button id="btnTabulador" type="button" class="btn btn-outline-primary btn-sm">
+                                Activar
+                            </button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </header>
 
-    <main id="contenido" tabindex="-1" class="container my-4">
-        <h2>Inicio</h2>
-        <p>
-            Bienvenido a la Experiencia Educativa Neurociencia Aplicada a la Educación
-            de las Personas con Discapacidad.
-        </p>
+    <!--Nav de menu principal-->
+    <nav id="menuPrincipal" class="menu-lateral" hidden aria-label="Menú principal">
+        <button id="cerrarMenu" aria-label="Cerrar menú" class="btn mb-3">✖ Cerrar</button>
 
-        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalInfo">
-            Información
-        </button>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <a href="#objetivo">Inicio</a>
+            </li>
+
+            <li class="list-group-item">
+                <a href="#descripcion">Módulo 1</a>
+
+                <ul class="list-group mt-2">
+                    <li class="list-group-item">
+                        <a href="#contenido">Tema 1</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="#expertos">Actividades</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <main id="contenido" tabindex="-1" class="container my-4">
+        <!--HOME-->
+        <section tabindex="0" class="content-section" aria-label="Competencia">
+            <h2>Competencia</h2>
+            <p class="mt-1">
+                Comprender el funcionamiento de los procesos cerebrales de adquisición del aprendizaje en las
+                Personas
+                con Discapacidad (PcD), para aplicar métodos de intervención neurodidáctica adecuados a las
+                necesidades
+                individuales.
+            </p>
+        </section>
+
+        <section tabindex="0" class="content-section" aria-label="Descripción">
+            <h2>Descripción</h2>
+            <p class="mt-3">
+                La Experiencia Educativa Neurociencia Aplicada a la Educación de las Personas con Discapacidad,
+                pertenece al área de formación optativa del Modelo Educativo Integral (MEI) de la Universidad
+                Veracruzana. Esta EE se compone de tres módulos que te permitirán conocer y aplicar conocimientos
+                sobre
+                los temas de: neurociencia, desarrollo cerebral, procesos psicológicos, neuroeducación y estrategias
+                pedagógicas para intervenir en los trastornos del aprendizaje de las PcD, teniendo las siguientes
+                bases
+                temáticas transversales: internacionalización, interculturalidad, arte- creatividad e inclusión en
+                un
+                marco de responsabilidad social.
+            </p>
+        </section>
+
+        <section tabindex="0" class="content-list-section mb-2" aria-label="Contenido">
+            <h2>Contenido</h2>
+            <ul class="mt-3 d-flex flex-column gap-3">
+                <li><strong>Información general</strong></li>
+                <li><strong>Módulo 1. Base de las neurociencias</strong></li>
+                <li><strong>Módulo 2. Neurociencia de las funciones mentales superiores</strong></li>
+                <li><strong>Módulo 3. Aportes de la neurociencia a la educación de las Personas con
+                        Discapacidad</strong></li>
+            </ul>
+        </section>
+
+        <section tabindex="0" class="content-section" aria-label="Experto en contenido">
+            <h2 id="titulo-experto">Experto en contenido</h2>
+
+            <!--Se muestra solo en moviles-->
+            <div class="flex-grow-1 d-flex flex-column d-sm-block d-md-none">
+                <h3 class="text-center">María Méndez García</h3>
+                <p class="text-center">
+                    <i>Universidad Veracruzana</i>
+                </p>
+
+                <p class="mt-2">
+                    Licenciada en Psicología de la Universidad Veracruzana.
+                    <br><br>
+                    Especialista en Neuropsicología Clínica Pediátrica por el Centro Neuropsicológico para Niños
+                    y Adolescentes (CENNA) de Monterrey, Nuevo León.
+                    <br><br>
+                    Diplomado en Neurodesarrollo y Neuroeducación por parte del Centro de Estudios Psicológicos
+                    para la Educación (CEPE).
+                    <br><br>
+                    En la actualidad es Neuropsicóloga responsable de tratamiento Neuropsicológico en
+                    niños/niñas y adolescentes, en el Centro Neuropsicológico Integral CENPI Special Therapy.
+                </p>
+            </div>
+
+            <!--No se muestra en moviles-->
+            <div class="experto d-flex gap-2 mt-4 d-none d-md-block">
+                <div class="flex-grow-1 d-flex flex-column">
+                    <h3 class="text-center">María Méndez García</h3>
+                    <p class="text-center">
+                        <i>Universidad Veracruzana</i>
+                    </p>
+
+                    <div class="mt-auto text-end">
+                        <button class="btn btn-primary end-0" data-bs-toggle="modal" data-bs-target="#modalInfo">
+                            Información
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section tabindex="0" class="content-section" aria-label="Fuentes de información">
+            <h2>Fuentes de información</h2>
+            <div class="d-flex align-items-center gap-3 flex-wrap mt-3">
+                <p class="text-success mb-0">
+                    <strong>Instrucción:</strong> Presiona el botón para descargar el archivo.
+                </p>
+
+                <button class="btn btn-primary ms-auto" onclick="downloadFile('assets/files/CV_Español.docx')">
+                    Fuentes de información
+                </button>
+            </div>
+        </section>
+
+        <!--Página de Introducción al Módulo-->
+        <section tabindex="0" class="content-section my-2" aria-label="Módulo 1. El cerebro, base de las neurociencias">
+            <h2>Módulo 1. El cerebro, base de las neurociencias</h2>
+
+            <img src="assets/images/modulo1_neurociencias.webp" alt="" aria-hidden="true"
+                class="img-fluid h-100 d-block mx-auto" />
+
+            <section tabindex="0" class="content-section my-2" aria-label="Propósito del Módulo 1">
+                <h3>Propósito</h3>
+                <p class="mt-3">
+                    Identificar la importancia del cerebro en el proceso de la manifestación conductual y el aprendizaje
+                    del
+                    ser humano.
+                </p>
+            </section>
+
+            <section tabindex="0" class="content-section my-2" aria-label="Introducción al Módulo 1">
+                <h3>Introducción</h3>
+                <p class="mt-3">
+                    En este módulo encontrarás una descripción detallada de la evolución de la neurociencia, haciendo
+                    énfasis en la neurociencia cognitiva y la neuroeducación, esto te permitirá vincular los
+                    conocimientos
+                    científicos relacionados con el cerebro a los procesos de aprendizaje para conocer y generar
+                    herramientas que optimicen los procesos de los educandos en los módulos posteriores. Haremos un
+                    recorrido por el desarrollo cerebral, recordando cómo se forma tan maravilloso órgano, las partes
+                    que lo
+                    integran y las funciones relacionadas con ellas; cómo es que el cerebro cambia y se adapta según su
+                    exposición a diversos aprendizajes.
+                </p>
+            </section>
+        </section>
+
+        <!--Página de Tema 1-->
+        <section class="content-section my-2" aria-label="Tema 1">
+            <h2 class="bg-success"><strong>Tema 1</strong></h2>
+
+            <section tabindex="0" class="content-section my-2" aria-label="Definición de neurociencia">
+                <h3>Definición de neurociencia</h3>
+
+                <p>
+                    La neurociencia proporciona la base científica para comprender la relación entre el cerebro, la
+                    conducta y el aprendizaje. Este conocimiento es fundamental para analizar tanto el funcionamiento
+                    típico del sistema nervioso como sus particularidades, lo que la convierte en una piedra angular
+                    para la intervención educativa en contextos de discapacidad.
+                </p>
+
+                <p class="text-success mb-0">
+                    <strong>Instrucción:</strong> Presiona la tecla de video para iniciar la reproducción.
+                </p>
+
+                <div class="ratio ratio-16x9 my-3">
+                    <iframe src="https://www.youtube.com/embed/AVVEO2hJHrE"
+                        title="Video explicativo sobre Neurociencia aplicada a la educación"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+
+                <div class="accordion my-2" id="acordeonGuionVideo">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Guion de video
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                            data-bs-parent="#acordeonGuionVideo">
+                            <div class="accordion-body">
+                                <p>
+                                    <strong>La neurociencia</strong>
+                                    <br><br>
+                                    La neurociencia es una disciplina de las ciencias naturales dedicada al estudio del
+                                    sistema nervioso, que comprende el cerebro, la médula espinal y las redes de
+                                    neuronas distribuidas por todo el cuerpo. Su campo de acción abarca la estructura,
+                                    la función y los procesos químicos que rigen el funcionamiento cerebral.
+                                    <br><br>
+                                    Su objetivo central es comprender los mecanismos mediante los cuales el sistema
+                                    nervioso regula tanto las funciones corporales básicas, como la respiración y el
+                                    ritmo cardíaco, como procesos complejos, que incluyen las emociones, los
+                                    pensamientos y la conducta.
+                                    <br><br>
+                                    Los neurocientíficos realizan investigaciones en múltiples niveles de análisis:
+                                <ul>
+                                    <li>Examinan componentes que van desde moléculas, células nerviosas y redes
+                                        neuronales, hasta la estructura cerebral en su conjunto.</li>
+                                    <li>Analizan la interacción de estos elementos en el desarrollo y funcionamiento
+                                        típico del sistema nervioso, así como en los trastornos y enfermedades que
+                                        afectan su crecimiento y actividad.</li>
+                                </ul>
+                                Este conocimiento constituye la base para comprender la relación entre el sistema
+                                nervioso, la conducta y el aprendizaje.
+
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section tabindex="0" class="content-section my-2" aria-label="Antecedentes">
+                <h3>Antecedentes</h3>
+
+                <p class="mt-3">
+                    Los fundamentos de la neurociencia moderna se sustentan en contribuciones históricas clave.
+                </p>
+
+                <p class="text-success mb-0">
+                    <strong>Instrucción:</strong> Presiona cada botón para conocer la información
+                </p>
+
+                <div class="container my-4">
+                    <div class="card p-4">
+                        <div id="acordeonAntecedentes" class="carousel slide" data-bs-interval="false">
+
+                            <div class="carousel-inner">
+
+                                <!-- Slide 1 (con imagen) -->
+                                <div class="carousel-item active">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-4">
+                                            <img src="assets/images/antecedentes_neurociencia.webp" class="img-fluid" alt="" aria-hidden="true">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <p>
+                                                La evolución de la neurociencia se remonta a los antiguos griegos que
+                                                estaban fascinados por el cerebro. En el siglo cinco a. C., Alcmeón de
+                                                Crotona, pionero de la disección, propuso que el cerebro era el asiento
+                                                del pensamiento y las sensaciones. Por otro lado, Aristóteles creía que
+                                                el centro del intelecto era el corazón. Más adelante, Galeno propuso que
+                                                el cerebelo actuaba sobre los músculos, el receptor de las sensaciones y
+                                                conservaba la memoria. También, relacionó los ventrículos cerebrales con
+                                                las cavidades del corazón estableciendo que las sensaciones y
+                                                movimientos dependían del flujo de los humores, hacia o desde los
+                                                ventrículos cerebrales, a través de los nervios.
+                                            </p>
+
+                                            <div class="text-center fw-bold">
+                                                1 / 3
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="carousel-item">
+                                    <p>
+                                        Durante el siglo dieciocho se planteó que el tejido nervioso desempeñaba una
+                                        función glandular. Con base en la teoría de Galeno se estableció que los nervios
+                                        eran el conducto que transportaba los fluidos secretados por el cerebro y la
+                                        médula espinal hacia la periferia del organismo humano. El surgimiento de las
+                                        máquinas hidráulicas contribuyó para reforzar la teoría ventricular cerebral.
+                                        Esta teoría expone que: “los líquidos expulsados desde los ventrículos bombean
+                                        al organismo, por eso los músculos aumentan de tamaño durante el movimiento”.
+                                    </p>
+
+                                    <div class="text-center fw-bold">
+                                        2 / 3
+                                    </div>
+                                </div>
+
+                                <div class="carousel-item">
+                                    <p>
+                                        René Descartes (1596-1650) defendió la teoría mecanicista de la función cerebral
+                                        para explicar la conducta de los animales. Pero para él esta teoría no
+                                        explicaría la complejidad de la conducta humana, pues el hombre, al contrario
+                                        que los animales, posee un intelecto y un alma dada por Dios. Por eso, Descartes
+                                        creía que el cerebro controlaba la conducta humana en lo que esta tiene de
+                                        animal y que las capacidades especiales del hombre residen fuera, en la mente
+                                        (“l’esprit”).
+                                    </p>
+                                    <p class="text-end">
+                                        <strong>Fuente:</strong> Castro, A. (2022).
+                                    </p>
+
+                                    <div class="text-center fw-bold">
+                                        3 / 3
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-3">
+
+                        <button class="btn btn-secondary me-2" data-bs-target="#acordeonAntecedentes"
+                            data-bs-slide="prev">
+                            Anterior
+                        </button>
+
+                        <button class="btn btn-success" data-bs-target="#acordeonAntecedentes" data-bs-slide="next">
+                            Siguiente
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
     </main>
 
-    <!-- Modal Bootstrap -->
+    <!-- Modals Bootstrap -->
     <div class="modal fade" id="modalInfo" tabindex="-1" aria-labelledby="modalInfoTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h2 class="modal-title" id="modalInfoTitle">Información</h2>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p>Contenido de ayuda accesible.</p>
+                    <div class="flex-grow-1 d-flex flex-column">
+                        <h3 class="text-center">María Méndez García</h3>
+                        <p class="text-center">
+                            <i>Universidad Veracruzana</i>
+                        </p>
+
+                        <p class="mt-2">
+                            Licenciada en Psicología de la Universidad Veracruzana.
+                            <br><br>
+                            Especialista en Neuropsicología Clínica Pediátrica por el Centro Neuropsicológico para
+                            Niños
+                            y Adolescentes (CENNA) de Monterrey, Nuevo León.
+                            <br><br>
+                            Diplomado en Neurodesarrollo y Neuroeducación por parte del Centro de Estudios
+                            Psicológicos
+                            para la Educación (CEPE).
+                            <br><br>
+                            En la actualidad es Neuropsicóloga responsable de tratamiento Neuropsicológico en
+                            niños/niñas y adolescentes, en el Centro Neuropsicológico Integral CENPI Special
+                            Therapy.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="modalLectorInmersivo" tabindex="-1" aria-labelledby="modalLectorInmersivoTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Para navegar dentro de la Experiencia Educativa utiliza los siguientes atajos:
+                        <br><br>
+                        <strong><i>Windows</i></strong>
+                        <br>
+                    <ul>
+                        <li>Abrir menú principal <i>Alt + M</i></li>
+                        <li>Cerrar menú principal <i>Alt + C</i> </li>
+                        <li>Archivo de lectura fácil <i>Alt + L</i></li>
+                    </ul>
+                    <br>
+                    <strong><i>Mac</i></strong>
+                    <br>
+                    <ul>
+                        <li>Abrir menú principal <i>Control + Option + M</i></li>
+                        <li>Cerrar menú principal <i>Control + Option + C</i> </li>
+                        <li>Archivo de lectura fácil <i>Control + Option + L</i></li>
+                    </ul>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Overlay-->
+    <div id="overlay" hidden></div>
+
+    <!--Linea de lectura-->
+    <div id="lineaLectura" hidden></div>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
