@@ -163,3 +163,13 @@ function toggleTabulador() {
 }
 
 btnTabulador.addEventListener("click", toggleTabulador);
+
+/* Abrir tarjetas interactivas mediante teclas */
+document.querySelectorAll('.tarjeta-interactiva').forEach(tarjeta => {
+  tarjeta.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      this.click();
+    }
+  });
+});

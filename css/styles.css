@@ -8,7 +8,7 @@
   height: 100%;
 
   background: white;
-  box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
 
   padding: 20px;
 
@@ -42,24 +42,24 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.4);
   z-index: 1400;
 }
 
 /* Tarjeta de profesor*/
 .experto {
-    max-width: 800px;
-    margin: 30px auto;
-    padding: 20px;
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 20px;
 
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    background-color: #f9f9f9;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
 }
 
 .experto:focus-visible {
-    outline: 4px solid #005fcc;
-    background-color: #eef6ff;
+  outline: 4px solid #005fcc;
+  background-color: #eef6ff;
 }
 
 #btnMenuAccesibilidad {
@@ -76,6 +76,104 @@
 /* Evitar que el li se resalte al dar click a un boton dentro */
 .no-resaltar:active,
 .no-resaltar:hover {
- background-color: transparent;
- color:#212529;
+  background-color: transparent;
+  color: #212529;
+}
+
+/* Interacciones que abren modals */
+.tarjeta-interactiva {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tarjeta-interactiva:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+
+.tarjeta-interactiva:focus {
+  outline: 2px solid #0d6efd;
+  outline-offset: 3px;
+}
+
+/* Neurociencia y educación - Secciones */
+.info-box {
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+}
+
+.box-azul {
+  background-color: #e8f1ff;
+}
+
+.box-verde {
+  background-color: #e8ffe8;
+}
+
+/* Mapa conceptual */
+.diagrama {
+  text-align: center;
+  margin: 40px auto;
+}
+
+.nodo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 180px;
+  height: 180px;
+
+  border-radius: 50%;
+  border-top: 3px solid #0d6efd;
+  border-bottom: 3px solid #0d6efd;
+
+  margin: 0 auto;
+  padding: 10px;
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.nodo:hover,
+.nodo:focus {
+  background: #e7f1ff;
+}
+
+.conexiones {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.linea-vertical {
+  width: 3px;
+  height: 40px;
+  background: #0d6efd;
+}
+
+.linea-horizontal {
+  width: 70%;
+  height: 3px;
+  background: #0d6efd;
+}
+
+.hijas {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 0;
+}
+
+.hija {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.linea-hija {
+  width: 3px;
+  height: 30px;
+  background: #0d6efd;
 }

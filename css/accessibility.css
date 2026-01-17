@@ -86,13 +86,3 @@ body {
   box-shadow: 0 0 8px rgba(255, 0, 0, 0.6) !important;
   transition: outline 0.1s ease;
 }
-
-/* Lectura en Jaws */
-.sr-only {
-  position: absolute;
-  left: -9999px;
-  top: auto;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-}

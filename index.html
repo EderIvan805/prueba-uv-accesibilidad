@@ -19,7 +19,7 @@
 
 <body>
     <!-- Información solo para lectores de pantalla -->
-    <div class="sr-only" aria-live="polite" id="infoLectores">
+    <div class="visually-hidden" aria-live="polite">
         Neurociencia Aplicada a la Educación de las Personas con Discapacidad.
         Neurociencia Aplicada a la Educación de las Personas con Discapacidad.
         Neurociencia Aplicada a la Educación de las Personas con Discapacidad.
@@ -81,7 +81,7 @@
 
             <!-- Menú de accesibilidad -->
             <div class="dropdown mt-5 d-none d-md-block">
-                <button class="btn btn-primary" aria-hidden="true" type="button" tabindex="-1" id="btnMenuAccesibilidad"
+                <button class="btn btn-primary" type="button" tabindex="-1" id="btnMenuAccesibilidad"
                     data-bs-toggle="dropdown" aria-expanded="false">
                     <img src="assets/icons/accesibilidad.png" alt="" aria-hidden="true">
                 </button>
@@ -134,21 +134,21 @@
         </div>
     </header>
 
-    <!--Nav de menu principal-->
+    <!--#region Nav de menu principal-->
     <nav id="menuPrincipal" class="menu-lateral" hidden aria-label="Menú principal">
         <button id="cerrarMenu" aria-label="Cerrar menú" class="btn mb-3">✖ Cerrar</button>
 
         <ul class="list-group">
             <li class="list-group-item">
-                <a href="#objetivo">Inicio</a>
+                <a href="#home">Inicio</a>
             </li>
 
             <li class="list-group-item">
-                <a href="#descripcion">Módulo 1</a>
+                <a href="#modulo1">Módulo 1</a>
 
                 <ul class="list-group mt-2">
                     <li class="list-group-item">
-                        <a href="#contenido">Tema 1</a>
+                        <a href="#tema1">Tema 1</a>
                     </li>
                     <li class="list-group-item">
                         <a href="#expertos">Actividades</a>
@@ -157,9 +157,10 @@
             </li>
         </ul>
     </nav>
+    <!--#endregion-->
 
-    <main id="contenido" tabindex="-1" class="container my-4">
-        <!--HOME-->
+    <main id="home" tabindex="-1" class="container my-4">
+        <!--#region HOME-->
         <section tabindex="0" class="content-section" aria-label="Competencia">
             <h2>Competencia</h2>
             <p class="mt-1">
@@ -251,9 +252,11 @@
                 </button>
             </div>
         </section>
+        <!--#endregion-->
 
-        <!--Página de Introducción al Módulo-->
-        <section tabindex="0" class="content-section my-2" aria-label="Módulo 1. El cerebro, base de las neurociencias">
+        <!--#region Página de Introducción al Módulo-->
+        <section id="modulo1" tabindex="0" class="content-section my-2"
+            aria-label="Módulo 1. El cerebro, base de las neurociencias">
             <h2>Módulo 1. El cerebro, base de las neurociencias</h2>
 
             <img src="assets/images/modulo1_neurociencias.webp" alt="" aria-hidden="true"
@@ -283,9 +286,10 @@
                 </p>
             </section>
         </section>
+        <!--#endregion-->
 
         <!--Página de Tema 1-->
-        <section class="content-section my-2" aria-label="Tema 1">
+        <section id="tema1" class="content-section my-2" aria-label="Tema 1">
             <h2 class="bg-success"><strong>Tema 1</strong></h2>
 
             <section tabindex="0" class="content-section my-2" aria-label="Definición de neurociencia">
@@ -310,7 +314,8 @@
                     </iframe>
                 </div>
 
-                <div class="accordion my-2" id="acordeonGuionVideo">
+                <!--Acordeón del guion del video, solo se muestra en pantallas grandes -->
+                <div class="accordion my-2 d-none d-md-block" id="acordeonGuionVideo">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingOne">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse"
@@ -350,6 +355,17 @@
                         </div>
                     </div>
                 </div>
+
+                <!--Se muestra solo en pantallas pequeñas-->
+                <div class="d-flex align-items-center gap-3 flex-wrap my-2 d-sm-block d-md-none">
+                    <p class="text-success mb-0">
+                        <strong>Instrucción:</strong> Presiona el botón para descargar el archivo.
+                    </p>
+
+                    <button class="btn btn-primary ms-auto" onclick="downloadFile('assets/files/Guion_Video.docx')">
+                        Guión del video
+                    </button>
+                </div>
             </section>
 
             <section tabindex="0" class="content-section my-2" aria-label="Antecedentes">
@@ -359,21 +375,22 @@
                     Los fundamentos de la neurociencia moderna se sustentan en contribuciones históricas clave.
                 </p>
 
-                <p class="text-success mb-0">
+                <p class="text-success mb-0 d-none d-md-block">
                     <strong>Instrucción:</strong> Presiona cada botón para conocer la información
                 </p>
 
-                <div class="container my-4">
+                <!--Carrusel de antecedentes, solo se muestra en pantallas grandes -->
+                <div class="container my-4 d-none d-md-block">
                     <div class="card p-4">
                         <div id="acordeonAntecedentes" class="carousel slide" data-bs-interval="false">
 
                             <div class="carousel-inner">
 
-                                <!-- Slide 1 (con imagen) -->
                                 <div class="carousel-item active">
                                     <div class="row align-items-center">
                                         <div class="col-md-4">
-                                            <img src="assets/images/antecedentes_neurociencia.webp" class="img-fluid" alt="" aria-hidden="true">
+                                            <img src="assets/images/antecedentes_neurociencia.webp" class="img-fluid"
+                                                alt="" aria-hidden="true">
                                         </div>
                                         <div class="col-md-8">
                                             <p>
@@ -449,11 +466,390 @@
 
                 </div>
 
+                <!--Se muestra solo en pantallas pequeñas-->
+                <div class="my-2 d-sm-block d-md-none">
+                    <p>
+                        La evolución de la neurociencia se remonta a los antiguos griegos que
+                        estaban fascinados por el cerebro. En el siglo cinco a. C., Alcmeón de
+                        Crotona, pionero de la disección, propuso que el cerebro era el asiento
+                        del pensamiento y las sensaciones. Por otro lado, Aristóteles creía que
+                        el centro del intelecto era el corazón. Más adelante, Galeno propuso que
+                        el cerebelo actuaba sobre los músculos, el receptor de las sensaciones y
+                        conservaba la memoria. También, relacionó los ventrículos cerebrales con
+                        las cavidades del corazón estableciendo que las sensaciones y
+                        movimientos dependían del flujo de los humores, hacia o desde los
+                        ventrículos cerebrales, a través de los nervios.
+                        <br><br>
+                        Durante el siglo dieciocho se planteó que el tejido nervioso desempeñaba una
+                        función glandular. Con base en la teoría de Galeno se estableció que los nervios
+                        eran el conducto que transportaba los fluidos secretados por el cerebro y la
+                        médula espinal hacia la periferia del organismo humano. El surgimiento de las
+                        máquinas hidráulicas contribuyó para reforzar la teoría ventricular cerebral.
+                        Esta teoría expone que: “los líquidos expulsados desde los ventrículos bombean
+                        al organismo, por eso los músculos aumentan de tamaño durante el movimiento”.
+                        <br><br>
+                        René Descartes (1596-1650) defendió la teoría mecanicista de la función cerebral
+                        para explicar la conducta de los animales. Pero para él esta teoría no
+                        explicaría la complejidad de la conducta humana, pues el hombre, al contrario
+                        que los animales, posee un intelecto y un alma dada por Dios. Por eso, Descartes
+                        creía que el cerebro controlaba la conducta humana en lo que esta tiene de
+                        animal y que las capacidades especiales del hombre residen fuera, en la mente
+                        (“l’esprit”).
+                        <br><br>
+                        <strong>Fuente:</strong> Castro, A. (2022).
+                    </p>
+                </div>
             </section>
 
+            <section tabindex="0" class="content-section my-2" aria-label="Teoría neuronal">
+                <h3>Teoría neuronal</h3>
+                <p class="mt-3">
+                    La teoría neuronal fue confirmada a través de diversos estudios, entre ellos el realizado por Ross
+                    Harrison. Un embriólogo que, por medio de cultivos tisulares, corroboró la teoría y demostró que las
+                    prolongaciones de las neuronas, las dendritas y axones son estructuras continuas del cuerpo
+                    neuronal, y se desarrollan a partir de esta.
+                </p>
+
+                <p class="text-success mb-0 d-none d-md-block">
+                    <strong>Instrucción:</strong> Presiona cada botón para conocer la información.
+                </p>
+
+                <!--Card de teoriona neuronal, solo se muestra en pantallas grandes-->
+                <div class="d-none d-md-block container my-2">
+                    <div class="row g-3">
+                        <div class="col-12 col-md-6">
+                            <div class="card tarjeta-interactiva h-100" role="button" tabindex="0"
+                                data-bs-toggle="modal" data-bs-target="#modalSigloDiecinueve"
+                                aria-label="Abrir información del siglo diecinueve">
+
+                                <div class="card-body d-flex align-items-center">
+                                    <div class="me-3">
+                                        <img src="assets/images/siglo19_neurociencia.webp" alt="" aria-hidden="true"
+                                            class="img-fluid rounded-circle"
+                                            style="width: 80px; height: 80px; object-fit: cover;">
+                                    </div>
+                                    <div class="flex-grow-1 text-center">
+                                        <p class="mb-0">
+                                            Siglo diecinueve
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <div class="card tarjeta-interactiva h-100" role="button" tabindex="0"
+                                data-bs-toggle="modal" data-bs-target="#modalSigloVeinte"
+                                aria-label="Abrir información del siglo veinte">
+
+                                <div class="card-body d-flex align-items-center">
+                                    <div class="me-3">
+                                        <img src="assets/images/siglo20_neurociencia.webp" alt="" aria-hidden="true"
+                                            class="img-fluid rounded-circle"
+                                            style="width: 80px; height: 80px; object-fit: cover;">
+                                    </div>
+                                    <div class="flex-grow-1 text-center">
+                                        <p class="mb-0">
+                                            Siglo veinte
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!--Se muestra solo en pantallas pequeñas-->
+                <div class="d-md-none d-block">
+                    <div class="p-3 mb-3" style="background-color:#f0f8ff;">
+                        <p>
+                            <strong>Siglo diecinueve</strong>
+                            <br><br>
+                            Durante el siglo diecinueve, los científicos Emil du Bois-Reymond, Johannes Müller y
+                            Herrmann
+                            von Helmholtz desarrollaron los fundamentos de la electrofisiología. Además, Helmholtz
+                            descubrió
+                            la actividad eléctrica de las neuronas durante la transmisión de información entre células.
+                            En
+                            la misma línea de investigación, el médico Charles Bell y el fisiólogo François Magendie
+                            aclararon la ruta de transmisión de las señales entre el sistema nervioso y la periferia del
+                            organismo. Por otra parte, el neurofisiólogo Charles Scott confirmó tajantemente la teoría
+                            de
+                            Ramón y Cajal acerca del contacto interneuronal, al que denominó sinapsis.
+                        </p>
+                    </div>
+                    <div class="p-3" style="background-color:#e8f5e9;">
+                        <p>
+                            <strong>Siglo veinte</strong>
+                            <br><br>
+                            El descubrimiento de Paul Ehrlich y John Langley constituye la base para los estudios
+                            actuales acerca de la transmisión química sináptica. Posteriormente, alrededor de 1960 el
+                            bioquímico Hornykiewicz observó que el cerebro de personas enfermas de Parkinson mostraba
+                            una baja concentración de dopamina. De esta forma, se establece una correlación
+                            fisiopatológica entre el déficit de un neurotransmisor y la presencia de un trastorno
+                            neurológico.
+                        </p>
+                    </div>
+                </div>
+
+                <p class="mt-3">
+                    En años recientes, el desarrollo de las neurociencias se ha vinculado con la psicología. Disciplina
+                    que está presente en la sociedad desde la época griega con los mismos cuestionamientos acerca de la
+                    naturaleza de la mente y el comportamiento humano.
+                </p>
+                <p class="text-end">
+                    <strong>Fuente:</strong> Castro, A. (2022).
+                </p>
+            </section>
+
+            <section tabindex="0" class="content-section my-2" aria-label="Neurociencia y educación">
+                <h3>Neurociencia y educación</h3>
+                <p class="mt-3">
+                    La neurociencia está acercando al profesorado a conocer el cerebro y su funcionamiento, ya que se ha
+                    demostrado su gran aportación al campo pedagógico respecto al funcionamiento del aprendizaje, la
+                    memoria, las emociones y muchas otras funciones cerebrales, que cada día son estimuladas en los
+                    centros educativos.
+                </p>
+
+                <!--Secciones de neurociencia y educación, solo se muestra en pantallas grandes-->
+                <div class="d-none d-md-block">
+                    <p class="text-success mb-0">
+                        <strong>Instrucción:</strong> Presiona cada botón para conocer la información
+                    </p>
+
+                    <div class="container my-4">
+                        <div class="d-grid gap-3">
+                            <button class="btn btn-success text-start p-3 tarjeta-interactiva" data-bs-toggle="modal"
+                                data-bs-target="#modalRelacionInterdisciplinaria">
+                                a. Relación interdisciplinaria
+                            </button>
+
+                            <button class="btn btn-success text-start p-3 tarjeta-interactiva" data-bs-toggle="modal"
+                                data-bs-target="#modalNeurocienciaCognitiva">
+                                b. Neurociencia cognitiva
+                            </button>
+
+                            <button class="btn btn-success text-start p-3 tarjeta-interactiva" data-bs-toggle="modal"
+                                data-bs-target="#modalConceptoNeuroeducacion">
+                                c. Concepto de neuroeducación
+                            </button>
+
+                            <button class="btn btn-success text-start p-3 tarjeta-interactiva" data-bs-toggle="modal"
+                                data-bs-target="#modalBeneficiosNeuroeducacion">
+                                d. Beneficios de la neuroeducación
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+                <!--Se muestra solo en pantallas pequeñas-->
+                <div class="d-block d-md-none my-2">
+                    <div class="info-box box-azul">
+                        <h4><strong>Relación interdisciplinaria</strong></h4>
+                        <p>
+                            De acuerdo con Varela (1996, citado por Ferreira, 2019) la relación entre neurociencia y
+                            educación debe necesariamente entenderse desde una perspectiva amplia, pues ambas
+                            disciplinas están estrechamente relacionadas con una serie de otras áreas de estudio. Es así
+                            como la neurociencia forma parte de un espectro mayor, que reúne a la psicología, la
+                            lingüística, la inteligencia artificial e incluso la antropología y la filosofía.
+                            <br><br>
+                            Por su parte, la educación también tiene una relación estrecha con todas las posibles
+                            asignaturas que se enseñan en un establecimiento escolar (lenguaje, matemáticas, historia,
+                            etc.), las que en conjunto permiten preparar a un individuo para formar parte de la
+                            sociedad.
+                        </p>
+                    </div>
+
+                    <div class="info-box box-verde">
+                        <h4><strong>Neurociencia cognitiva</strong></h4>
+                        <p>
+                            Al hablar de neurociencia nos referimos principalmente a la neurociencia cognitiva, pues
+                            esta área se preocupa de estudiar la relación entre la mente y el cerebro, y representa la
+                            integración de la psicología cognitiva y la neurociencia. Entre tanto, al referirnos a la
+                            mente, aludimos a los procesos cognitivos como la percepción, el pensamiento, la conciencia
+                            y la memoria, entre otros. Por su parte, el cerebro, además de realizar las funciones que
+                            mantienen el funcionamiento del cuerpo, es el órgano donde reside la mente, es decir, donde
+                            tienen lugar todos los procesos cognitivos.
+                        </p>
+                    </div>
+
+                    <div class="info-box box-azul">
+                        <h4><strong>Concepto de Neuroeducación</strong></h4>
+                        <p>
+                            La neuroeducación es una disciplina que busca integrar contribuciones de la neurociencia, la
+                            psicología, la ciencia cognitiva y la educación. Se centra en comprender los mecanismos
+                            cerebrales del aprendizaje para desarrollar métodos más eficaces y eficientes que orienten
+                            el diseño de currículos y políticas educativas (Caicedo López, 2016, citado en Ensuncho
+                            Hoyos, 2024). Este concepto también se denomina neuroaprendizaje, aprendizaje basado en el
+                            cerebro, neurociencia educacional o educación compatible con el funcionamiento cerebral
+                        </p>
+                    </div>
+
+                    <div class="info-box box-verde">
+                        <h4><strong>Beneficios</strong></h4>
+                        <p>
+                            Uno de sus mayores beneficios de la neuroeducación es gestionar las emociones, enseñar a las
+                            personas a identificar qué tipo de emoción están sintiendo para no reaccionar impulsivamente
+                            a ellas y así, poder dar una respuesta más acertada. La gestión de las emociones tiene que
+                            ser utilizada para potenciar el aprendizaje.
+                            <br><br>
+                            Saber qué es la neuroeducación nos enfoca a mejorar las estrategias del desarrollo educativo
+                            y los procesos de enseñanza estableciendo un puente entre la neurología y las disciplinas
+                            que engloban a la educación.
+                        </p>
+                    </div>
+                </div>
+                <p>
+                    La neurociencia proporciona las bases científicas para comprender los procesos cerebrales
+                    vinculados al aprendizaje. Su aplicación en el ámbito educativo, a través de la neuroeducación,
+                    permite desarrollar estrategias pedagógicas fundamentadas que optimizan la gestión emocional y
+                    los procesos de enseñanza. Este enfoque representa un avance significativo para la creación de
+                    entornos educativos más eficaces e inclusivos.
+                </p>
+
+            </section>
+
+            <section tabindex="0" class="content-section my-2" aria-label="Neurociencia cognitiva y neuroeducación">
+                <h3>Neurociencia cognitiva y neuroeducación</h3>
+
+                <div class="row align-items-center">
+                    <div class="col-md-4">
+                        <img src="assets/images/antecedentes_neurociencia.webp" class="img-fluid" alt=""
+                            aria-hidden="true">
+                    </div>
+                    <div class="col-md-8">
+                        <p>
+                            La neurociencia cognitiva se configura como una disciplina fundamental que estudia las
+                            complejas relaciones entre el sistema nervioso y los procesos cognitivos humanos, integrando
+                            los aportes de la psicología cognitiva y las neurociencias. Desde esta perspectiva, surge la
+                            neuroeducación como campo de convergencia que combina los hallazgos neurocientíficos con los
+                            principios pedagógicos, estableciendo un puente esencial entre la investigación cerebral y
+                            la práctica educativa.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="my-2" style="background-color: #d4e0eb;">
+                    <p>
+                        Para profundizar en el tema, consulta los siguientes materiales:
+                    <ul>
+                        <li>
+                            <a href="http://www.scielo.org.pe/pdf/pyr/v8n1/2310-4635-pyr-8-01-e312.pdf" target="_blank"
+                                rel="noopener noreferrer">
+                                Aportes desde las neurociencias para la comprensión de los procesos de aprendizaje en
+                                los contextos educativos.
+                                <span class="visually-hidden">
+                                    Enlace [Aportes desde las neurociencias para la comprensión de los procesos de
+                                    aprendizaje en los contextos educativos] se abre en nueva pestaña.
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.researchgate.net/publication/334363029_Por_que_la_neurociencia_deberia_ser_parte_de_la_formacion_inicial_docente"
+                                target="_blank" rel="noopener noreferrer">
+                                ¿Por qué la neurociencia debería ser parte de la formación inicial docente?
+                                <span class="visually-hidden">
+                                    Enlace [¿Por qué la neurociencia debería ser parte de la formación inicial
+                                    docente?] se abre en nueva pestaña.
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    </p>
+                </div>
+
+            </section>
+
+            <section tabindex="0" class="content-section my-2" aria-label="Plasticidad cerebral y aprendizaje">
+                <h3>Plasticidad cerebral y aprendizaje</h3>
+                <p class="my-2">
+                    La capacidad del cerebro para adaptarse y cambiar ante cualquier circunstancia, se conoce como
+                    neuroplasticidad y gracias a las neurociencias, podemos saber que el cerebro sigue creando y
+                    modificando conexiones neuronales como resultado de un proceso adaptativo.
+                </p>
+
+                <!--Diagrama de plasticidad cerebral, solo se muestra en pantallas grandes-->
+                <div class="d-none d-md-block">
+                    <p class="text-success mb-0">
+                        <strong>Instrucción:</strong> Presiona cada botón para conocer la información
+                    </p>
+                    <div class="diagrama">
+                        <div class="nodo principal tarjeta-interactiva" role="button" tabindex="0"
+                            data-bs-toggle="modal" data-bs-target="#modalPlasticidadCerebral">
+                            Plasticidad cerebral
+                        </div>
+
+                        <div class="conexiones">
+                            <div class="linea-vertical"></div>
+                            <div class="linea-horizontal"></div>
+                        </div>
+
+                        <div class="hijas">
+                            <div class="hija">
+                                <div class="linea-hija"></div>
+                                <div class="nodo tarjeta-interactiva" role="button" tabindex="0" data-bs-toggle="modal"
+                                    data-bs-target="#modalPlasticidadEstructural">
+                                    Plasticidad estructural
+                                </div>
+                            </div>
+
+                            <div class="hija">
+                                <div class="linea-hija"></div>
+                                <div class="nodo tarjeta-interactiva" role="button" tabindex="0" data-bs-toggle="modal"
+                                    data-bs-target="#modalPlasticidadFuncional">
+                                    Plasticidad funcional
+                                </div>
+                            </div>
+
+                            <div class="hija">
+                                <div class="linea-hija"></div>
+                                <div class="nodo tarjeta-interactiva" role="button" tabindex="0" data-bs-toggle="modal"
+                                    data-bs-target="#modalPlasticidadMolecular">
+                                    Plasticidad molecular
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Se muestra solo en pantallas pequeñas-->
+                <div class="d-block d-md-none">
+                    <ul>
+                        <li>
+                            <p><strong>Plasticidad cerebral:</strong> Capacidad del cerebro para adaptarse y cambiar
+                            ante cualquier circunstancia, creando y modificando conexiones neuronales como resultado
+                            de un proceso adaptativo.</p>
+                        </li>
+                        <li>
+                            <p><strong>Plasticidad estructural:</strong> Cambios físicos en la estructura del cerebro,
+                            como el crecimiento de nuevas neuronas o la formación de nuevas conexiones sinápticas.</p>
+                        </li>
+                        <li>
+                            <p><strong>Plasticidad funcional:</strong> Capacidad del cerebro para reorganizarse y
+                            reasignar funciones a diferentes áreas cerebrales en respuesta a lesiones o cambios en el
+                            entorno.</p>
+                        </li>
+                        <li>
+                            <p><strong>Plasticidad molecular:</strong> Cambios a nivel molecular, como la modificación
+                            de receptores y neurotransmisores, que afectan la comunicación entre las neuronas.</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <p class="my-2">
+                    Aunque la plasticidad cerebral es una capacidad que perdura toda la vida y se estimula mediante
+                    diversas actividades (Doddoli, 2022), el aprendizaje escolar no puede reducirse a simples procesos
+                    cerebrales. Como señala Terigi (2016), comprender lo que sucede en la escuela requiere mirar más
+                    allá del cerebro: la calidad de la enseñanza, las interacciones en el aula y el contexto educativo
+                    son fundamentales para entender cómo se produce el conocimiento.
+                </p>
+            </section>
     </main>
 
-    <!-- Modals Bootstrap -->
+    <!-- #region Modals Bootstrap -->
     <div class="modal fade" id="modalInfo" tabindex="-1" aria-labelledby="modalInfoTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -519,6 +915,218 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="modalSigloDiecinueve" tabindex="-1" aria-labelledby="modalSigloDiecinueveTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h4><strong>Siglo diecinueve</strong></h4>
+                    <p>
+                        Durante el siglo diecinueve, los científicos Emil du Bois-Reymond, Johannes Müller y Herrmann
+                        von Helmholtz desarrollaron los fundamentos de la electrofisiología. Además, Helmholtz descubrió
+                        la actividad eléctrica de las neuronas durante la transmisión de información entre células. En
+                        la misma línea de investigación, el médico Charles Bell y el fisiólogo François Magendie
+                        aclararon la ruta de transmisión de las señales entre el sistema nervioso y la periferia del
+                        organismo. Por otra parte, el neurofisiólogo Charles Scott confirmó tajantemente la teoría de
+                        Ramón y Cajal acerca del contacto interneuronal, al que denominó sinapsis.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalSigloVeinte" tabindex="-1" aria-labelledby="modalSigloVeinteTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h4><strong>Siglo veinte</strong></h4>
+                    <p>
+                        El descubrimiento de Paul Ehrlich y John Langley constituye la base para los estudios actuales
+                        acerca de la transmisión química sináptica. Posteriormente, alrededor de 1960 el bioquímico
+                        Hornykiewicz observó que el cerebro de personas enfermas de Parkinson mostraba una baja
+                        concentración de dopamina. De esta forma, se establece una correlación fisiopatológica entre el
+                        déficit de un neurotransmisor y la presencia de un trastorno neurológico.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalRelacionInterdisciplinaria" tabindex="-1"
+        aria-labelledby="modalRelacionInterdisciplinariaTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h4><strong>Relación interdisciplinaria</strong></h4>
+                    <p>
+                        De acuerdo con Varela (1996, citado por Ferreira, 2019) la relación entre neurociencia y
+                        educación debe necesariamente entenderse desde una perspectiva amplia, pues ambas disciplinas
+                        están estrechamente relacionadas con una serie de otras áreas de estudio. Es así como la
+                        neurociencia forma parte de un espectro mayor, que reúne a la psicología, la lingüística, la
+                        inteligencia artificial e incluso la antropología y la filosofía.
+                        <br><br>
+                        Por su parte, la educación también tiene una relación estrecha con todas las posibles
+                        asignaturas que se enseñan en un establecimiento escolar (lenguaje, matemáticas, historia,
+                        etc.), las que en conjunto permiten preparar a un individuo para formar parte de la sociedad.
+
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalNeurocienciaCognitiva" tabindex="-1"
+        aria-labelledby="modalNeurocienciaCognitivaTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h4><strong>Neurociencia cognitiva</strong></h4>
+                    <p>
+                        Al hablar de neurociencia nos referimos principalmente a la neurociencia cognitiva, pues esta
+                        área se preocupa de estudiar la relación entre la mente y el cerebro, y representa la
+                        integración de la psicología cognitiva y la neurociencia. Entre tanto, al referirnos a la mente,
+                        aludimos a los procesos cognitivos como la percepción, el pensamiento, la conciencia y la
+                        memoria, entre otros. Por su parte, el cerebro, además de realizar las funciones que mantienen
+                        el funcionamiento del cuerpo, es el órgano donde reside la mente, es decir, donde tienen lugar
+                        todos los procesos cognitivos.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalConceptoNeuroeducacion" tabindex="-1"
+        aria-labelledby="modalConceptoNeuroeducacionTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h4><strong>Concepto de neuroeducación</strong></h4>
+                    <p>
+                        La neuroeducación es una disciplina que busca integrar contribuciones de la neurociencia, la
+                        psicología, la ciencia cognitiva y la educación. Se centra en comprender los mecanismos
+                        cerebrales del aprendizaje para desarrollar métodos más eficaces y eficientes que orienten el
+                        diseño de currículos y políticas educativas (Caicedo López, 2016, citado en Ensuncho Hoyos,
+                        2024). Este concepto también se denomina neuroaprendizaje, aprendizaje basado en el cerebro,
+                        neurociencia educacional o educación compatible con el funcionamiento cerebral.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalBeneficiosNeuroeducacion" tabindex="-1"
+        aria-labelledby="modalBeneficiosNeuroeducacionTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h4><strong>Beneficios</strong></h4>
+                    <p>
+                        Uno de sus mayores beneficios de la neuroeducación es gestionar las emociones, enseñar a las
+                        personas a identificar qué tipo de emoción están sintiendo para no reaccionar impulsivamente a
+                        ellas y así, poder dar una respuesta más acertada. La gestión de las emociones tiene que ser
+                        utilizada para potenciar el aprendizaje.
+                        <br><br>
+                        Saber qué es la neuroeducación nos enfoca a mejorar las estrategias del desarrollo educativo y
+                        los procesos de enseñanza estableciendo un puente entre la neurología y las disciplinas que
+                        engloban a la educación.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalPlasticidadCerebral" tabindex="-1" aria-labelledby="modalPlasticidadCerebralTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h4><strong>Plasticidad cerebral</strong></h4>
+                    <p>
+                        Es la capacidad del cerebro para adaptarse y reorganizarse a lo largo de la vida como respuesta
+                        a las experiencias y al aprendizaje.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalPlasticidadEstructural" tabindex="-1"
+        aria-labelledby="modalPlasticidadEstructuralTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h4><strong>Plasticidad estructural</strong></h4>
+                    <p>
+                        Plasticidad estructural
+                        Es la capacidad del sistema nervioso para modificar físicamente las conexiones entre neuronas,
+                        reforzando las redes existentes e, incluso, formando nuevas.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalPlasticidadFuncional" tabindex="-1"
+        aria-labelledby="modalPlasticidadFuncionalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h4><strong>Plasticidad funcional</strong></h4>
+                    <p>
+                        Permite que las funciones de una región cerebral dañada puedan ser asumidas por otra área.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalPlasticidadMolecular" tabindex="-1"
+        aria-labelledby="modalPlasticidadMolecularTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h4><strong>Plasticidad molecular</strong></h4>
+                    <p>
+                        Proceso bioquímico que fortalece las conexiones sinápticas que se usan con frecuencia y debilita
+                        las que no, bajo el principio de "úsalo o piérdelo".
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #endregion -->
 
     <!--Overlay-->
     <div id="overlay" hidden></div>

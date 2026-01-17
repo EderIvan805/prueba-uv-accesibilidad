@@ -66,7 +66,7 @@ window.btnAbrir.addEventListener("click", abrirMenu);
 window.btnCerrar.addEventListener("click", cerrarMenu);
 window.overlay.addEventListener("click", cerrarMenu);
 
-/*Evitar advertencia accesibilidad bootstrap modal */
+/*Evitar advertencia accesibilidad bootstrap modal y boton*/
 document.querySelectorAll('.modal').forEach((modal) => {
   modal.addEventListener('hide.bs.modal', () => {
     document.activeElement.blur();
