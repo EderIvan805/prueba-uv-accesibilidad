@@ -73,6 +73,11 @@
   height: auto;
 }
 
+#btnMenuAccesibilidad:focus {
+  outline: 1px solid #0d6efd;
+  outline-offset: 3px;
+}
+
 /* Evitar que el li se resalte al dar click a un boton dentro */
 .no-resaltar:active,
 .no-resaltar:hover {
